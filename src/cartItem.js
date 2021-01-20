@@ -1,15 +1,6 @@
 import React from "react";
 
 class CartItem extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            price: 1009,
-            title: "Phone",
-            qty: 1,
-            img: ""
-        }
-    }
     increaseQuantity = () => {
         // ---->setstate form 1-->this form uses shallow merging 
         //both form uses batching concept but in form 2 if we call functions thrice value got incremented by 3
@@ -42,7 +33,7 @@ class CartItem extends React.Component {
         });
     }
     render() {
-        const {price, title, qty} = this.state;
+        const {price, title, qty} = this.props.product;
         return (
             <div className="cart-item">
                 <div className="left-block">
