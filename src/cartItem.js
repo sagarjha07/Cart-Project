@@ -1,12 +1,12 @@
 import React from "react";
 
 const CartItem = (props) => {
-    const {price, title, qty, id} = props.product;
+    const {price, title, qty, id,img} = props.product;
     const {product, onIncrease, onDecrease, onDelete} = props;
     return (
         <div className="cart-item">
             <div className="left-block">
-                <img alt="" style={styles.image}/>
+                <img alt="" style={styles.image} src={img} />
             </div>
             <div className="right-block">
                 <div style={{
@@ -60,9 +60,8 @@ export default CartItem;
 // we use ajax and promises     //since using AJAX or Promises make call
 // synchronous     // if previous state required ----->setstate form     //
 // 2-->this form also uses shallow merging     this.setState((prevState) => {
-//      return {             qty: prevState.qty + 1         }     },()=>{
-//  //use this call back to get state updated accordingly         //sice set
-// state is asynchronous         console.log(this.state);     });     //setState
-// call is asyncronous } decreaseQuantity = () => {     if (this.state.qty ===
-// 0)         return;     this.setState({         qty: this.state.qty - 1
-// }); }
+//   return {             qty: prevState.qty + 1         }     },()=>{  //use
+// this call back to get state updated accordingly         //sice set state is
+// asynchronous         console.log(this.state);     });     //setState call is
+// asyncronous } decreaseQuantity = () => {     if (this.state.qty === 0)
+//  return;     this.setState({         qty: this.state.qty - 1 }); }
