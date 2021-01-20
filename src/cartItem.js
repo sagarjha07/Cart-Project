@@ -10,12 +10,29 @@ class CartItem extends React.Component {
             img: ""
         }
     }
+    increaseQuantity = () => {
+        // ---->setstate form 1-->this form uses shallow merging this.setState({
+        // qty:this.state.qty+1 }); if previous state required ----->setstate form
+        // 2-->this form also uses shallow merging
+        this.setState((prevState) => {
+            return {
+                qty: prevState.qty + 1
+            }
+        });
+    }
+    decreaseQuantity = () => {
+        if (this.state.qty === 0) 
+            return;
+        this.setState({
+            qty: this.state.qty - 1
+        });
+    }
     render() {
         const {price, title, qty} = this.state;
         return (
             <div className="cart-item">
                 <div className="left-block">
-                    <img style={styles.image}/>
+                    <img alt="" style={styles.image}/>
                 </div>
                 <div className="right-block">
                     <div style={{
@@ -32,11 +49,13 @@ class CartItem extends React.Component {
                         <img
                             alt=""
                             className="action-icons"
-                            src="https://www.flaticon.com/svg/vstatic/svg/1828/1828926.svg?token=exp=1611104252~hmac=fa4e0e4ad3f532f143ba319a541f16ac"/>
+                            src="https://www.flaticon.com/svg/vstatic/svg/1828/1828926.svg?token=exp=1611104252~hmac=fa4e0e4ad3f532f143ba319a541f16ac"
+                            onClick={this.increaseQuantity}/>
                         <img
                             alt=""
                             className="action-icons"
-                            src="https://www.flaticon.com/svg/vstatic/svg/659/659892.svg?token=exp=1611104324~hmac=1456beb7472a1cbbd1e917d364110c97"/>
+                            src="https://www.flaticon.com/svg/vstatic/svg/659/659892.svg?token=exp=1611104324~hmac=1456beb7472a1cbbd1e917d364110c97"
+                            onClick={this.decreaseQuantity}/>
                         <img
                             alt=""
                             className="action-icons"
