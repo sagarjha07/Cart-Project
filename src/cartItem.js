@@ -11,14 +11,28 @@ class CartItem extends React.Component {
         }
     }
     increaseQuantity = () => {
-        // ---->setstate form 1-->this form uses shallow merging this.setState({
-        // qty:this.state.qty+1 }); if previous state required ----->setstate form
+        // ---->setstate form 1-->this form uses shallow merging 
+        //both form uses batching concept but in form 2 if we call functions thrice value got incremented by 3
+        //whereas in form 1 value got incremented by one only
+        // this.setState({
+        // qty:this.state.qty+1 
+        // });
+        
+        //setState do not perform batching when we use ajax and promises
+        //since using AJAX or Promises make call synchronous
+
+        // if previous state required ----->setstate form
         // 2-->this form also uses shallow merging
         this.setState((prevState) => {
             return {
                 qty: prevState.qty + 1
             }
+        },()=>{
+            //use this call back to get state updated accordingly
+            //sice set state is asynchronous
+            console.log(this.state);
         });
+        //setState call is asyncronous
     }
     decreaseQuantity = () => {
         if (this.state.qty === 0) 
